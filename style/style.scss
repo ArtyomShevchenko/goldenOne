@@ -1,6 +1,7 @@
 :root {
     --white: #fff;
     --orange: #fed136;
+    --superLightGray: #f7f7f7;
     --lightGray: #bbbbbb;
     --gray: #555555;
     --black: #222;
@@ -37,7 +38,7 @@ h2 {
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 h3,
@@ -63,11 +64,13 @@ button {
     font-style: italic;
     text-align: center;
     margin-top: 1.5rem;
+    color: var(--gray);
 }
 
 .wrapper {
     max-width: 940px;
     margin: 0 auto;
+    padding: 120px 0;
 }
 
 .container {
@@ -84,10 +87,10 @@ button {
     height: 100vh;
     width: 100%;
     color: var(--white);
-    padding: 50px 0;
 
     .wrapper {
         height: 100%;
+        padding: 40px 0;
     }
 
     .nav {
@@ -111,7 +114,7 @@ button {
             align-items: center;
 
             a {
-                color: var(--white);
+                color: inherit;
             }
         }
 
@@ -139,25 +142,240 @@ button {
 
     h1 {
         font-size: 4rem;
+        color: inherit;
     }
 
     .subtitle {
         font-size: 2rem;
         text-transform: capitalize;
         margin: 0;
+        color: inherit;
     }
 
 }
 
 .main {
+
+    .services-container {
+        .cards-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding-top: 80px;
+
+            .card {
+                padding: 10px;
+                text-align: center;
+                max-width: 285px;
+
+                .icon {
+                    width: 72px;
+                    height: 72px;
+                    border: 4px solid var(--orange);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    fill: var(--orange);
+                    margin: 0 auto;
+                }
+
+                h3 {
+                    margin-top: 1.5rem;
+                }
+
+                p {
+                    color: var(--gray);
+                    font-size: 0.8rem;
+                    line-height: 1.3rem;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+
+    .portfolio-container {
+        background-color: var(--superLightGray);
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 36px;
+            padding-top: 80px;
+
+            .card {
+                text-align: center;
+                text-transform: capitalize;
+                background-color: var(--white);
+
+                .image-container {
+                    width: 290px;
+                    height: 300px;
+                    position: relative;
+                    margin-inline: auto;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                h3 {
+                    padding-top: 30px;
+                }
+
+                .subtitle {
+                    margin: 0;
+                    padding-bottom: 30px;
+                    font-size: 0.9rem;
+                }
+            }
+
+            @media (max-width: 1000px) {
+                grid-template-columns: repeat(2, 1fr);
+
+                .card .image-container {
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 600px) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    .about-container {
+        text-align: center;
+        p {
+            color: gray;
+        }
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 90px;
+            margin-top: 80px;
+            position: relative;
+
+            &::after {
+                content: "";
+                width: 4px;
+                height: 100%;
+                background-color: var(--lightGray);
+                position: absolute;
+                top: 0;
+                right: 50%;
+                z-index: -1;
+                transform: translate(-50%, 0);
+            }
+
+            .card {
+                text-align: center;
+                text-transform: capitalize;
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+
+                .image-container {
+                    width: 220px;
+                    height: 220px;
+                    border-radius: 50%;
+                    border: 7px solid var(--lightGray);
+                    overflow: hidden;
+                    grid-column: 2/3;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .content {
+                    grid-column: 1/2;
+                    h3 {
+                        text-align: end;
+                        padding-top: 15px;
+                    }
+                    
+                    p {
+                        text-align: end;
+                        padding-top: 10px;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .team-container {
+        background-color: var(--superLightGray);
+        text-align: center;
+        p {
+            color: gray;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 60px;
+            padding-top: 80px;
+
+            .card {
+                text-align: center;
+                text-transform: capitalize;
+
+                .image-container {
+                    width: 220px;
+                    height: 220px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    position: relative;
+                    margin-inline: auto;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                h3 {
+                    padding-top: 15px;
+                }
+
+                p {
+                    padding-top: 10px;
+                    font-size: 0.9rem;
+                }
+
+                .social-container {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    padding-top: 15px;
+                }
+            }
+        }
+        .text-container {
+            text-align: center;
+            padding-top: 47px;
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+
     .contact-container {
         background-color: var(--black);
         background-image: url("../media/image/contact_bg.png");
         background-repeat: no-repeat;
         background-position: right bottom;
-        padding: 110px 0;
 
-        .title {
+        h2 {
             color: var(--white);
         }
 
@@ -224,8 +442,10 @@ button {
 }
 
 .footer {
+    .wrapper {
+        padding: 30px 0;
+    }
     background-color: var(--white);
-    padding: 30px 0;
     position: relative;
 
     .wrapper {
