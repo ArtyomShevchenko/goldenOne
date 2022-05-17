@@ -1,7 +1,7 @@
 :root {
   --white: #fff;
   --orange: #fed136;
-  --superLightGray: #f7f7f7;
+  --superLightGray: #f1f1f1;
   --lightGray: #bbbbbb;
   --gray: #555555;
   --black: #222;
@@ -97,6 +97,13 @@ button {
   color: var(--white);
 }
 
+@media (max-height: 900px) {
+  .header {
+    height: 100%;
+    padding: 50px 0;
+  }
+}
+
 .header .wrapper {
   height: 100%;
   padding: 40px 0;
@@ -128,6 +135,11 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 40px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -155,10 +167,12 @@ button {
   .header .nav .logo {
     -ms-flex-item-align: start;
         align-self: flex-start;
+    font-size: 3rem;
   }
   .header .nav .menu {
     margin-top: 30px;
     gap: 20px;
+    font-size: 1.5rem;
   }
 }
 
@@ -170,9 +184,18 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 50px;
   min-height: 100%;
+}
+
+@media (max-height: 900px) {
+  .header .title-container {
+    height: 100%;
+    padding: 100px 0;
+  }
 }
 
 .header h1 {
@@ -341,21 +364,25 @@ button {
 .main .about-container .cards-container .card {
   text-align: center;
   text-transform: capitalize;
+  min-width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 33% 33% 33%;
-      grid-template-columns: 33% 33% 33%;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }
 
 .main .about-container .cards-container .card .image-container {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  border: 7px solid var(--lightGray);
+  border: 7px solid var(--superLightGray);
   overflow: hidden;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 .main .about-container .cards-container .card .image-container img {
@@ -369,17 +396,124 @@ button {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main .about-container .cards-container .card .content h3, .main .about-container .cards-container .card .content p, .main .about-container .cards-container .card .content span {
+  text-align: end;
+  margin-left: auto;
 }
 
 .main .about-container .cards-container .card .content h3 {
-  text-align: end;
-  padding-top: 15px;
+  text-transform: uppercase;
 }
 
-.main .about-container .cards-container .card .content p {
-  text-align: end;
-  padding-top: 10px;
-  font-size: 0.9rem;
+.main .about-container .cards-container .card .content h3 span {
+  text-transform: capitalize;
+  display: block;
+}
+
+.main .about-container .cards-container .card:nth-child(even) .content {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+.main .about-container .cards-container .card:nth-child(even) .content h3, .main .about-container .cards-container .card:nth-child(even) .content p, .main .about-container .cards-container .card:nth-child(even) .content span {
+  text-align: start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.main .about-container .cards-container .card:last-child .image-container {
+  background-color: var(--orange);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main .about-container .cards-container .card:last-child .image-container span {
+  font-family: "montserrat";
+  font-weight: bold;
+  line-height: 2.5rem;
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .main .about-container .cards-container .card {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .main .about-container .cards-container .card:last-child {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .main .about-container .cards-container .card {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .main .about-container .cards-container .card .image-container {
+    display: none;
+  }
+  .main .about-container .cards-container .card .content {
+    grid-column: auto;
+  }
+  .main .about-container .cards-container .card .content h3, .main .about-container .cards-container .card .content p, .main .about-container .cards-container .card .content span {
+    text-align: start;
+    margin: 10px 0;
+    margin-right: auto;
+  }
+  .main .about-container .cards-container .card:nth-child(even) .content {
+    grid-column: auto;
+  }
+  .main .about-container .cards-container .card:nth-child(even) .content h3, .main .about-container .cards-container .card:nth-child(even) .content p, .main .about-container .cards-container .card:nth-child(even) .content span {
+    text-align: start;
+    margin: 10px 0;
+    margin-right: auto;
+  }
+  .main .about-container .cards-container .card:last-child {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .main .about-container .cards-container::after {
+    display: none;
+  }
 }
 
 .main .team-container {
