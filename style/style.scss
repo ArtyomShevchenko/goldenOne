@@ -90,7 +90,7 @@ button {
 
     @media (max-height: 900px) {
         height: 100%;
-        padding: 50px 0;
+        padding-bottom: 50px;
     }
 
     .wrapper {
@@ -278,9 +278,9 @@ button {
 
             &::after {
                 content: "";
-                width: 4px;
+                width: 2px;
                 height: 100%;
-                background-color: var(--lightGray);
+                background-color: var(--superLightGray);
                 position: absolute;
                 top: 0;
                 right: 50%;
@@ -453,6 +453,22 @@ button {
                     justify-content: center;
                     gap: 10px;
                     padding-top: 15px;
+
+                    a {
+                        border: 3px solid var(--black);
+                        border-radius: 50%;
+                        width: 42px;
+                        height: 42px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        svg {
+                            height: 20px;
+                            fill: var(--black)
+                        }
+                    }
+                    
                 }
             }
         }
@@ -461,6 +477,16 @@ button {
             padding-top: 47px;
             width: 80%;
             margin: 0 auto;
+        }
+    }
+
+    .brands-container {
+        .wrapper {
+            padding: 60px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
         }
     }
 

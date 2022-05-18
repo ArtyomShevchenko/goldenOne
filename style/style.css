@@ -100,7 +100,7 @@ button {
 @media (max-height: 900px) {
   .header {
     height: 100%;
-    padding: 50px 0;
+    padding-bottom: 50px;
   }
 }
 
@@ -350,9 +350,9 @@ button {
 
 .main .about-container .cards-container::after {
   content: "";
-  width: 4px;
+  width: 2px;
   height: 100%;
-  background-color: var(--lightGray);
+  background-color: var(--superLightGray);
   position: absolute;
   top: 0;
   right: 50%;
@@ -579,11 +579,45 @@ button {
   padding-top: 15px;
 }
 
+.main .team-container .cards-container .card .social-container a {
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main .team-container .cards-container .card .social-container a svg {
+  height: 20px;
+  fill: var(--black);
+}
+
 .main .team-container .text-container {
   text-align: center;
   padding-top: 47px;
   width: 80%;
   margin: 0 auto;
+}
+
+.main .brands-container .wrapper {
+  padding: 60px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 40px;
 }
 
 .main .contact-container {
