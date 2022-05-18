@@ -20,32 +20,43 @@ const googlePlus = `
     </svg>
 `;
 const socialLinks = document.querySelectorAll(".social_link");
+
 for (link of socialLinks) {
     let str = String(link.href);
-    if(str.search("twitter") >= 0) {
+    if (str.search("twitter") >= 0) {
         link.innerHTML = twitter;
     }
 
-    if(str.search("pinterest") >= 0) {
+    if (str.search("pinterest") >= 0) {
         link.innerHTML = pinterest;
     }
 
-    if(str.search("facebook") >= 0) {
+    if (str.search("facebook") >= 0) {
         link.innerHTML = facebook;
     }
 
-    if(str.search("google") >= 0) {
+    if (str.search("google") >= 0) {
         link.innerHTML = googlePlus;
     }
-}
+};
 
 // form
+const data = Object();
 const form = document.querySelector("#form");
 
 form.lastElementChild.addEventListener("click", () => {
-    console.log(1)
-})
+    for (element of form.children) {
+        if (element.value === "") {
+            element.value = undefined;
+        } else {
+            data[`${element.id}`] = element.value;
 
-// for (item of form.children) {
-//     console.log(item)
-// }
+            const div = document.createElement("div");
+            div.innerHTML = `${data[element.id]}`;
+            document.querySelector(".output").append(div);
+        }
+    }
+    console.log(data);
+});
+
+// 

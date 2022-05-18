@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <input value="Artyom" class="input-data" type="text" id="name" placeholder="name">
+        <input value="email@mail.com" class="input-data" type="email" id="email" placeholder="email">
+        <input value="sub" class="input-data" type="text" id="subject" placeholder="subject">
+        <textarea value="aaa" class="input-data" name="message" id="message" cols="auto" rows="auto"
+            placeholder="area"></textarea>
+        <button type="submit">send message</button>
+    </form>
+
+    <div class="output"></div>
+    </div>
+
+    <!-- script -->
+    <script>
+        let obj = {};
+        const form = document.querySelector("form");
+
+        for (element of form.children) {
+            if (element.value === "") {
+                element.value = undefined;
+            } else {
+                obj[`${element.id}`] = element.value;
+            }
+        }
+
+        console.log(obj)
+
+    </script>
+
+</body>
+
+</html>
