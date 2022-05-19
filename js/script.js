@@ -41,22 +41,28 @@ for (link of socialLinks) {
 };
 
 // form
-const data = Object();
+const data = Array();
 const form = document.querySelector("#form");
 
 form.lastElementChild.addEventListener("click", () => {
+
+    let massage = {};
+
     for (element of form.children) {
         if (element.value === "") {
             element.value = undefined;
-        } else {
-            data[`${element.id}`] = element.value;
-
-            const div = document.createElement("div");
-            div.innerHTML = `${data[element.id]}`;
-            document.querySelector(".output").append(div);
         }
+        massage[element.id] = element.value;
     }
-    console.log(data);
+
+    data.push(massage);
+    console.table(data)
 });
 
-// 
+// burger menu
+const burger = document.querySelector(".burger")
+
+burger.addEventListener("click", (event) => {
+    document.querySelector(".burger").classList.toggle("burger-close");
+    document.querySelector(".menu").classList.toggle("menu-close");
+});

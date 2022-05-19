@@ -181,7 +181,7 @@ button {
 .wrapper {
   max-width: 940px;
   margin: 0 auto;
-  padding: 120px 0;
+  padding: 120px 15px;
 }
 
 .container {
@@ -221,7 +221,7 @@ button {
 
 .header .wrapper {
   height: 100%;
-  padding: 40px 0;
+  padding-top: 40px;
 }
 
 .header .nav {
@@ -235,12 +235,80 @@ button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header .nav .logo {
   font-family: "wisdom";
   font-size: 2rem;
   color: var(--orange);
+  position: relative;
+  z-index: 5;
+}
+
+.header .nav .burger {
+  width: 40px;
+  height: 30px;
+  position: fixed;
+  right: 15px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.header .nav .burger span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: var(--orange);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: absolute;
+}
+
+.header .nav .burger span:nth-child(1) {
+  top: 0;
+}
+
+.header .nav .burger span:nth-child(2) {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.header .nav .burger span:nth-child(3) {
+  bottom: 0;
+}
+
+.header .nav .burger:hover span, .header .nav .burger:active span {
+  -webkit-box-shadow: 0 0 4px var(--orange);
+          box-shadow: 0 0 4px var(--orange);
+}
+
+@media (min-width: 768px) {
+  .header .nav .burger {
+    display: none;
+  }
+}
+
+.header .nav .burger-close span:nth-child(1) {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg);
+}
+
+.header .nav .burger-close span:nth-child(2) {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+  opacity: 0;
+}
+
+.header .nav .burger-close span:nth-child(3) {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+          transform: translateY(-50%) rotate(-45deg);
 }
 
 .header .nav .menu {
@@ -269,26 +337,38 @@ button {
   color: inherit;
 }
 
-@media (max-width: 550px) {
-  .header .nav {
+.header .nav .menu a:hover, .header .nav .menu a:active {
+  color: var(--orange);
+  text-shadow: 0px 0px 3px #fed136;
+}
+
+@media (max-width: 768px) {
+  .header .nav .menu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    font-size: 2rem;
+    background-color: var(--black);
+    color: var(--superLightGray);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    padding: 100px 50px;
+    -webkit-transition: all ease-out 0.3s;
+    transition: all ease-out 0.3s;
   }
-  .header .nav .logo {
-    -ms-flex-item-align: start;
-        align-self: flex-start;
-    font-size: 3rem;
-  }
-  .header .nav .menu {
-    margin-top: 30px;
-    gap: 20px;
-    font-size: 1.5rem;
-  }
+}
+
+.header .nav .menu-close {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 
 .header .title-container {
@@ -385,7 +465,7 @@ button {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  grid-gap: 36px;
+  grid-gap: 30px;
   padding-top: 80px;
 }
 
@@ -396,7 +476,7 @@ button {
 }
 
 .main .portfolio-container .cards-container .card .image-container {
-  width: 290px;
+  width: 280px;
   height: 300px;
   position: relative;
   margin-inline: auto;
@@ -764,7 +844,7 @@ button {
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-gap: 28px;
-  margin-top: 90px;
+  margin: 90px 0;
 }
 
 .main .contact-container form input,
@@ -777,7 +857,7 @@ button {
   background-color: var(--white);
   border: 2px solid var(--lightGray);
   border-radius: 4px;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   resize: none;
 }
 
@@ -832,8 +912,6 @@ button {
         grid-template-columns: repeat(1, 1fr);
     -ms-grid-rows: (1fr)[6];
         grid-template-rows: repeat(6, 1fr);
-    margin-left: 40px;
-    margin-right: 40px;
   }
   .main .contact-container form textarea {
     -ms-grid-column: 1;
@@ -848,12 +926,6 @@ button {
     -ms-grid-column-span: 1;
     grid-column: 1/2;
   }
-}
-
-.main .contact-container .output div {
-  background-color: var(--white);
-  padding: 5px;
-  margin: 5px;
 }
 
 .footer {

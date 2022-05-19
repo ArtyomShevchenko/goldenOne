@@ -130,7 +130,7 @@ button {
 .wrapper {
     max-width: 940px;
     margin: 0 auto;
-    padding: 120px 0;
+    padding: 120px 15px;
 }
 
 .container {
@@ -147,6 +147,7 @@ button {
     height: 100vh;
     width: 100%;
     color: var(--white);
+
     a:hover {
         animation: none;
     }
@@ -158,18 +159,78 @@ button {
 
     .wrapper {
         height: 100%;
-        padding: 40px 0;
+        padding-top: 40px;
     }
 
     .nav {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
 
         .logo {
             font-family: "wisdom";
             font-size: 2rem;
             color: var(--orange);
+            position: relative;
+            z-index: 5;
+        }
+
+        .burger {
+            width: 40px;
+            height: 30px;
+            position: fixed;
+            right: 15px;
+            z-index: 5;
+            cursor: pointer;
+            span {
+                display: block;
+                width: 100%;
+                height: 4px;
+                border-radius: 4px;
+                background-color: var(--orange);
+                transition: all 0.3s;
+                position: absolute;
+                &:nth-child(1) {
+                    top: 0;
+                }
+                &:nth-child(2) {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &:nth-child(3) {
+                    bottom: 0;
+                }
+            }
+            &:hover,
+            &:active {
+                span {
+                    box-shadow: 0 0 4px var(--orange);
+                }
+            }
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
+
+        .burger-close {
+            span {
+                &:nth-child(1) {
+                    top: 50%;
+                    transform: translateY(-50%) rotate(45deg);
+
+                }
+
+                &:nth-child(2) {
+                    transform: rotateY(90deg);
+                    opacity: 0;
+                }
+
+                &:nth-child(3) {
+                    top: 50%;
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
         }
 
         .menu {
@@ -186,23 +247,32 @@ button {
             a {
                 color: inherit;
             }
-        }
-
-        @media (max-width: 550px) {
-            flex-direction: column;
-            align-items: center;
-
-            .logo {
-                align-self: flex-start;
-                font-size: 3rem;
+            a:hover, a:active {
+                color: var(--orange);
+                text-shadow: 0px 0px 3px #fed136;
             }
 
-            .menu {
-                margin-top: 30px;
-                gap: 20px;
-                font-size: 1.5rem;
+            @media (max-width: 768px) {
+                flex-direction: column;
+                align-items: flex-end;
+                font-size: 2rem;
+                background-color: var(--black);
+                color: var(--superLightGray);
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 4;
+                padding: 100px 50px;
+                transition: all ease-out 0.3s;
             }
         }
+
+        .menu-close {
+            transform: translateY(-100%);
+        }
+
     }
 
     .title-container {
@@ -280,7 +350,7 @@ button {
         .cards-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 36px;
+            grid-gap: 30px;
             padding-top: 80px;
 
             .card {
@@ -289,7 +359,7 @@ button {
                 background-color: var(--white);
 
                 .image-container {
-                    width: 290px;
+                    width: 280px;
                     height: 300px;
                     position: relative;
                     margin-inline: auto;
@@ -598,7 +668,7 @@ button {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 28px;
-            margin-top: 90px;
+            margin: 90px 0;
 
             input,
             textarea {
@@ -610,7 +680,7 @@ button {
                 background-color: var(--white);
                 border: 2px solid var(--lightGray);
                 border-radius: 4px;
-                padding: 1rem 1.5rem;
+                padding: 1rem 1rem;
                 resize: none;
             }
 
@@ -637,25 +707,13 @@ button {
                 display: grid;
                 grid-template-columns: repeat(1, 1fr);
                 grid-template-rows: repeat(6, 1fr);
-                margin-left: 40px;
-                margin-right: 40px;
-
                 textarea {
                     grid-column: 1/2;
                     grid-row: 4/6;
                 }
-
                 button {
                     grid-column: 1/2;
                 }
-            }
-        }
-
-        .output {
-            div {
-                background-color: var(--white);
-                padding: 5px;
-                margin: 5px;
             }
         }
     }
